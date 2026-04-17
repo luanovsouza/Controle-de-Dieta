@@ -6,8 +6,17 @@
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/ControleDietaApi.runtimeconfig.json
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/ControleDietaApi.dll
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/ControleDietaApi.pdb
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/AutoMapper.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.OpenApi.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/obj/Debug/net9.0/ControleDietaApi.csproj.AssemblyReference.cache
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/obj/Debug/net9.0/ControleDietaApi.GeneratedMSBuildEditorConfig.editorconfig
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/obj/Debug/net9.0/ControleDietaApi.AssemblyInfoInputs.cache
@@ -32,3 +41,8 @@
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/obj/Debug/net9.0/ControleDietaApi.pdb
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/obj/Debug/net9.0/ControleDietaApi.genruntimeconfig.cache
 /home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/obj/Debug/net9.0/ref/ControleDietaApi.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
+/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/bin/Debug/net9.0/System.Diagnostics.DiagnosticSource.dll

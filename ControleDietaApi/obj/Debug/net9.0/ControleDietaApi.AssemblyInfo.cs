@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControleDietaApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d239f9c67927415d214e884c5cad0aab0eaa3d31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f3c2cadd59d50de94c2886c3b873272318de3fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControleDietaApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControleDietaApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

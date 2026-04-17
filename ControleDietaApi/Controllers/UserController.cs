@@ -1,3 +1,5 @@
+using AutoMapper;
+using ControleDietaApi.Dto;
 using ControleDietaApi.Models;
 using ControleDietaApi.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -10,19 +12,28 @@ namespace ControleDietaApi.Controllers;
 public class UserController : ControllerBase
 {
     private readonly INutritionService _nutritionService;
+    private readonly IMapper _mapper;
 
-    public UserController(INutritionService nutritionService)
+
+    public UserController(INutritionService nutritionService, IMapper mapper)
     {
         _nutritionService = nutritionService;
+        _mapper = mapper;
     }
 
 
     [HttpPost("api/calcular-meta-diaria")]
-    public async Task<IActionResult> CalcularMetaDiaria([FromBody] User user)
+    public async Task<IActionResult> CalcularMetaDiaria([FromBody] UserDto userDto)
     {
-        var meta = _nutritionService.CalcularMetaDiaria(user);
+        var newUserDto = _mapper.Map<User>(userDto);
 
-        user.MetaDiaria = meta;
+        var meta = _nutritionService.CalcularMetaDiaria(newUserDto);
+
+        newUserDto.MetaDiaria = meta;
+
+        var user = _mapper.Map<UserDto>(User);
+
+
 
         return Ok(new
         {

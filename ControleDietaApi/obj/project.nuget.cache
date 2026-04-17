@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Vt5lwI4p714=",
+  "success": true,
+  "projectFilePath": "/home/souzza/Documentos/Controle Dieta/ControleDietaApi/ControleDietaApi/ControleDietaApi.csproj",
+  "expectedPackageFiles": [
+    "/home/souzza/.nuget/packages/microsoft.aspnetcore.openapi/9.0.14/microsoft.aspnetcore.openapi.9.0.14.nupkg.sha512",
+    "/home/souzza/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

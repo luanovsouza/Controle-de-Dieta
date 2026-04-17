@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleDietaApi", "ControleDietaApi\ControleDietaApi.csproj", "{A8947FC3-E7B0-4821-8214-BD85A075BAAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8947FC3-E7B0-4821-8214-BD85A075BAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8947FC3-E7B0-4821-8214-BD85A075BAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8947FC3-E7B0-4821-8214-BD85A075BAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8947FC3-E7B0-4821-8214-BD85A075BAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

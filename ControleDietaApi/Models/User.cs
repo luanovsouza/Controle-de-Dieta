@@ -10,5 +10,5 @@ public class User
     public decimal Altura { get; set; }
     public string Meta { get; set; } = "Emagrecer";
 
-    public string? MetaDiaria { get; set; }
+    public string? MetaDiaria { get; set; } //Meta diaria do q ela vai poder comer
 }

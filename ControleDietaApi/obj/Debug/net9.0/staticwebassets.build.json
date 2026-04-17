@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "pfGEgqpqU1dMNBzE9EChT4jNGIc3QP2s4xVkd4pS6DQ=",
+  "Source": "ControleDietaApi",
+  "BasePath": "_content/ControleDietaApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -27,7 +27,4 @@ desenvolvida em **C# / .NET** projetada para ajudar utilizadores a monitorizar a
 
 ## 💻 Ambiente de Desenvolvimento
 
-O projeto foi estruturado para ser altamente portátil.consistenteoda
-Toda a infraestrutura de dados é gerida via containers, garantindo que a aplicação funcifoitente
-sistentea consistente independentemente da máquina local.APIoi
-foiesenvolvimento foi focado em performance e tipagem forte para garantir a integridade dos cálculos metabólicos.
+O projeto foi estruturado para ser altamente portátil. Toda a infraestrutura de dados é gerida via containers, garantindo que a aplicação funcione de forma consistente independentemente da máquina local. O desenvolvimento foi focado em performance e tipagem forte para garantir a integridade dos cálculos metabólicos.

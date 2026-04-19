@@ -7,8 +7,7 @@ desenvolvida em **C# / .NET** projetada para ajudar utilizadores a monitorizar a
 
 ## 🚀 Funcionalidades
 
-* **Processamento por IA (Em monitorizarntegração com a API do Gemini para interpretar interpretar
-  r de refeições (ex: "Comi dois ovos cozidos e uma banana").
+* **Processamento por IA: (Em Andamento)** Integração com a API do Gemini para interpretar descrições de refeições (ex: "Comi dois ovos cozidos e uma banana").
 * **Cálculo Metabólico:** Lógica integrada para cálculo de Taxa Metabólica Basal (TMB) e gasto energético.
 * **Gestão de Dieta:** Registo e acompanhamento diário de calorias e macronutrientes.
 * **Arquitetura Limpa:** Uso de DTOs para transferência de dados segura e organizada.

@@ -1,4 +1,3 @@
-using ControleDietaApi.Dto.Mapping;
 using ControleDietaApi.Services;
 using ControleDietaApi.Services.Interfaces;
 
@@ -13,11 +12,6 @@ builder.Services.AddSwaggerGen();
 
 //Configurações de Serviços e Interfaces
 builder.Services.AddScoped<INutritionService, NutritionService>();
-
-
-//Configuarçoes de Mapeamento
-builder.Services.AddAutoMapper(typeof(UserDtoMapping));
-
 
 var app = builder.Build();
 

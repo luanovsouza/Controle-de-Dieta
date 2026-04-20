@@ -1,5 +1,6 @@
 using AutoMapper;
 using ControleDietaApi.Dto;
+using ControleDietaApi.Dto.ExtensionsMappings;
 using ControleDietaApi.Models;
 using ControleDietaApi.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -12,34 +13,37 @@ namespace ControleDietaApi.Controllers;
 public class UserController : ControllerBase
 {
     private readonly INutritionService _nutritionService;
-    private readonly IMapper _mapper;
 
-
-    public UserController(INutritionService nutritionService, IMapper mapper)
+    public UserController(INutritionService nutritionService)
     {
         _nutritionService = nutritionService;
-        _mapper = mapper;
     }
 
-
     [HttpPost("api/calcular-meta-diaria")]
-    public async Task<IActionResult> CalcularMetaDiaria([FromBody] UserDto userDto)
+    public IActionResult CalcularMetaDiaria([FromBody] UserDto userDto)
     {
-        var newUserDto = _mapper.Map<User>(userDto);
+        if (userDto == null)
+        {
+            return BadRequest("Os dados do usuário não foram enviados corretamente.");
+        }
 
-        var meta = _nutritionService.CalcularMetaDiaria(newUserDto);
+        // Verificação de segurança 2: O serviço foi injetado?
+        if (_nutritionService == null)
+        {
+            return StatusCode(500, "O serviço de nutrição não foi inicializado.");
+        }
 
-        newUserDto.MetaDiaria = meta;
+        var newUser = userDto.ToUser();
 
-        var user = _mapper.Map<UserDto>(User);
+        var meta = _nutritionService.CalcularMetaDiaria(newUser);
 
-
+        newUser.MetaDiaria = meta;
 
         return Ok(new
         {
-            Mensagem = $"Ola {user.Nome}, a sua meta da sua dieta foi calculada!",
+            Mensagem = $"Ola {newUser.Nome}, a sua meta da sua dieta foi calculada!",
             Meta = meta,
-            DadosFisicos = user
+            DadosFisicos = newUser
         });
     }
 }

@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using ControleDietaApi.Services;
 using ControleDietaApi.Services.Interfaces;
 
@@ -5,13 +6,28 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+  .AddJsonOptions(opt =>
+      {
+          opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+      });
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 
 //Configurações de Serviços e Interfaces
 builder.Services.AddScoped<INutritionService, NutritionService>();
+
+var OrigemComAcessoPermitido = "_origemComAcessoPermitido";
+
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy(name: OrigemComAcessoPermitido,
+        policy =>
+        {
+            policy.WithOrigins("https://apirequest.io").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+        });
+});
 
 var app = builder.Build();
 
@@ -23,7 +39,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
 
+app.UseCors(OrigemComAcessoPermitido);
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

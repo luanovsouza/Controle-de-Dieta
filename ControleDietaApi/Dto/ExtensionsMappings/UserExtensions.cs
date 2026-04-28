@@ -11,6 +11,8 @@ public static class UserExtensions
             Id = user.Id,
             Nome = user.Nome,
             Idade = user.Idade,
+            Sexo = user.Sexo,
+            AtividadeFisica = user.AtividadeFisica,
             Altura = user.Altura,
             Peso = user.Peso,
             Meta = user.Meta
@@ -25,6 +27,8 @@ public static class UserExtensions
             Id = userDto.Id,
             Nome = userDto.Nome,
             Idade = userDto.Idade,
+            Sexo = userDto.Sexo,
+            AtividadeFisica = userDto.AtividadeFisica,
             Altura = userDto.Altura,
             Peso = userDto.Peso,
             Meta = userDto.Meta

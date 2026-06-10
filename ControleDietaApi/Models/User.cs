@@ -36,6 +36,11 @@ public class User
     [Column(TypeName = "numeric(5,2)")]
     public double Altura { get; set; }
 
+    /// <summary>
+    /// Emagrecer,
+    /// ManterPeso,
+    /// GanharMassa
+    /// </summary>
     [Required(ErrorMessage = "Campo obrigatorio!")]
     public ObjetivoDieta Meta { get; set; } //A meta que ela vai querer pro corpo
 

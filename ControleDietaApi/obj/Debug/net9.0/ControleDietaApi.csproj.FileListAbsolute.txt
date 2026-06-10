@@ -53,7 +53,6 @@ C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\b
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\bin\Debug\net9.0\ControleDietaApi.runtimeconfig.json
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\bin\Debug\net9.0\ControleDietaApi.dll
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\bin\Debug\net9.0\ControleDietaApi.pdb
-C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\bin\Debug\net9.0\ControleDietaApi.xml
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\bin\Debug\net9.0\GenerativeAI.dll
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\bin\Debug\net9.0\Humanizer.dll
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
@@ -178,7 +177,6 @@ C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\o
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\obj\Debug\net9.0\Controle.C1CBE36C.Up2Date
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\obj\Debug\net9.0\ControleDietaApi.dll
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\obj\Debug\net9.0\refint\ControleDietaApi.dll
-C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\obj\Debug\net9.0\ControleDietaApi.xml
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\obj\Debug\net9.0\ControleDietaApi.pdb
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\obj\Debug\net9.0\ControleDietaApi.genruntimeconfig.cache
 C:\Users\gamer\Documents\Controle Dieta APi\Controle-de-Dieta\ControleDietaApi\obj\Debug\net9.0\ref\ControleDietaApi.dll

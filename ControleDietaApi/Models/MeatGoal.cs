@@ -13,7 +13,7 @@ public class MeatGoal //Vai ser oq ela comeu no dia, como se fosse um Log
     public double Carbs { get; set; }
     public double Fat { get; set; }
 
-    public DateTime ConsumedAt { get; set; } //Quando foi consumido 
+    public DateTime ConsumedAt { get; set; } //A data que foi consumido 
 
     //Relacionamento
     public int UserId { get; set; }

@@ -1,4 +1,3 @@
-using AutoMapper;
 using ControleDietaApi.Dto;
 using ControleDietaApi.Dto.ExtensionsMappings;
 using ControleDietaApi.Models;
@@ -9,17 +8,23 @@ namespace ControleDietaApi.Controllers;
 
 
 [ApiController]
-[Route("[controller]")]
-public class UserController : ControllerBase
+[Route("api/[controller]")]
+public class UserMetaCalController : ControllerBase
 {
     private readonly INutritionService _nutritionService;
 
-    public UserController(INutritionService nutritionService)
+    public UserMetaCalController(INutritionService nutritionService)
     {
         _nutritionService = nutritionService;
     }
-
-    [HttpPost("api/calcular-meta-diaria")]
+    
+    /// <summary>
+    /// Cria uma Meta calorica para o Usuario baseado nas perguntas
+    /// </summary>
+    /// <param name="userDto"></param>
+    /// <returns>Os dados do usuario e a meta calorica</returns>
+    /// <remarks>Retorna 200 ok com a meta calorica calculada</remarks>
+    [HttpPost("calcular-meta-diaria")]
     public IActionResult CalcularMetaDiaria([FromBody] UserDto userDto)
     {
         if (userDto == null)

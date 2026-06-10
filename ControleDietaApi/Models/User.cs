@@ -9,6 +9,7 @@ namespace ControleDietaApi.Models;
 public class User
 {
     [Key]
+    [JsonIgnore]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatorio!")]
@@ -28,7 +29,7 @@ public class User
     public NivelAtividade AtividadeFisica { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatorio!")]
-    [Column(TypeName = "double(5,2)")]
+    [Column(TypeName = "numeric(5,2)")]
     public double Peso { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatorio!")]

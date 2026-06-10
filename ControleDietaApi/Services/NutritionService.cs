@@ -12,11 +12,9 @@ public class NutritionService : INutritionService
 {
 
     private readonly GenerativeModel _model;
-    private RespostaIaDto _respostaIaDto;
 
-    public NutritionService(IConfiguration configuration, RespostaIaDto respostaIaDto)
+    public NutritionService(IConfiguration configuration)
     {
-        _respostaIaDto = respostaIaDto;
         //Pegando a Chave de API
         var apiKey = configuration["Gemini:ApiKey"];
         
@@ -90,6 +88,7 @@ public class NutritionService : INutritionService
                 PropertyNameCaseInsensitive = true // Evita erros se as chaves virem minúsculas/maiúsculas
             });
 
+            //Transformando o model em Dto
             var dadosExtraidosDto = dadosExtraidos.ToRespostaIaDto();
             
             if (dadosExtraidosDto == null)

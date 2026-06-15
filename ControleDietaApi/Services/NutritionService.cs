@@ -2,6 +2,7 @@ using ControleDietaApi.Dto;
 using ControleDietaApi.Dto.ExtensionsMappings;
 using ControleDietaApi.Enum;
 using ControleDietaApi.Models;
+using ControleDietaApi.Repositories.Interfaces;
 using ControleDietaApi.Services.Interfaces;
 using GenerativeAI;
 using Microsoft.Extensions.AI;
@@ -14,9 +15,13 @@ public class NutritionService : INutritionService
 {
     private readonly IChatClient _clientChat;
     private List<ChatMessage> historicoChat = new();
+    private readonly IRepository<MeatGoal> _repository;
+    private readonly IUnitOfWork _uof;
 
-    public NutritionService()
+    public NutritionService(IRepository<MeatGoal> repository, IUnitOfWork uof)
     {
+        _repository = repository;
+        _uof = uof;
         _clientChat = new OllamaApiClient(new Uri("http://localhost:11434"), "llama3.2");
     }
 
@@ -125,7 +130,11 @@ public class NutritionService : INutritionService
             }
 
             dadosExtraidos.UserId = userId;
-            dadosExtraidos.ConsumedAt = DateTime.Now;
+            dadosExtraidos.Description = descricao;
+            dadosExtraidos.ConsumedAt = DateTime.UtcNow;
+            
+            await _repository.Create(dadosExtraidos);
+            await _uof.Commit();
 
             //Transformando o model em Dto
             var dadosExtraidosDto = dadosExtraidos.ToRespostaIaDto();

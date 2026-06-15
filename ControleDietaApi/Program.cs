@@ -58,6 +58,7 @@ builder.Services.AddScoped<INutritionService, NutritionService>();
 //Repositorios
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IMealsUserRepository, MealUserRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();

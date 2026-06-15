@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using ControleDietaApi.Context;
 using ControleDietaApi.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleDietaApi.Repositories;
 
@@ -18,29 +19,29 @@ public class Repository<T> : IRepository<T> where T : class
         return _context.Set<T>().ToList();
     }
 
-    public T? GetById(Expression<Func<T, bool>> predicate)
+    public async Task<T?> GetById(Expression<Func<T, bool>> predicate)
     {
-        return _context.Set<T>().FirstOrDefault(predicate);
+        return await _context.Set<T>().FirstOrDefaultAsync(predicate);
     }
 
-    public T Create(T entity)
+    public async Task<T> Create(T entity)
     {
-        _context.Set<T>().Add(entity);
-        _context.SaveChanges();
+        await _context.Set<T>().AddAsync(entity);
+        await _context.SaveChangesAsync();
         return entity;
     }
 
-    public T Update(T entity)
+    public async Task<T> Update(T entity)
     {
         _context.Set<T>().Update(entity);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
         return entity;
     }
 
-    public T Delete(T entity)
+    public async Task<T> Delete(T entity)
     {
         _context.Set<T>().Remove(entity);
-        _context.SaveChanges();
+         await _context.SaveChangesAsync();
         return entity;
     }
 }

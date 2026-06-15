@@ -51,14 +51,10 @@ public class UserMetaCalController : ControllerBase
         newUser.MetaDiaria = meta;
         
         
-        
         //Depois Salva no banco
         await _ofWork.Users.CreateAsync(newUser);
-        Console.WriteLine("Antes do Commit");
         await _ofWork.Commit();
-        Console.WriteLine($"Depois do commit -User id {newUser.Id}");
         
-
         return Ok(new
         {
             Mensagem = $"Ola {newUser.Nome}, a sua meta da sua dieta foi calculada!",

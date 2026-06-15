@@ -27,6 +27,10 @@ public class ProcessFoodIaController : ControllerBase
         var result = await _nutritionService.ProcessarRefeicaoIa(processarRefeicaoDto.Descricao, 
             processarRefeicaoDto.UserId);
         
-        return Ok(result);
+        return Ok(new
+        {
+            Message = "Aqui esta o resumo do que voce comeu",
+            Resultado = result
+        });
     }
 }

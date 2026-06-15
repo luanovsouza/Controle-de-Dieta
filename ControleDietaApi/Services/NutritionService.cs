@@ -12,16 +12,14 @@ namespace ControleDietaApi.Services;
 
 public class NutritionService : INutritionService
 {
-    
-
     private readonly IChatClient _clientChat;
     private List<ChatMessage> historicoChat = new();
-    
+
     public NutritionService()
     {
         _clientChat = new OllamaApiClient(new Uri("http://localhost:11434"), "llama3.2");
     }
-    
+
     public double CalcularMetaDiaria(User user) //Serve para definir o orçamento de energia durante 24hrs
     {
         double tmb;
@@ -29,13 +27,13 @@ public class NutritionService : INutritionService
         if (user.Sexo.ToLower() == "homem" || user.Sexo.ToLower() == "masculino")
         {
             tmb = (10.00 * user.Peso) + (6.25 * user.Altura) -
-              (5.0 * user.Idade) + 5.0;
+                (5.0 * user.Idade) + 5.0;
         }
 
         else if (user.Sexo.ToLower() == "mulher" || user.Sexo.ToLower() == "feminino")
         {
             tmb = (10.00 * user.Peso) + (6.25 * user.Altura) -
-              (5.0 * user.Idade) - 161.0;
+                  (5.0 * user.Idade) - 161.0;
         }
         else
         {
@@ -56,18 +54,51 @@ public class NutritionService : INutritionService
     public async Task<RespostaIaDto> ProcessarRefeicaoIa(string descricao, int userId)
     {
         var prompt = $@"
-        Analise a seguinte refeição brasileira (se nao for, identifique (a)): '{descricao}'.
-        Estime as calorias (Calories), proteínas (Protein), carboidratos (Carbs) e gorduras (Fat).
-        
-        Você DEVE responder ESTRITAMENTE em formato JSON válido, sem formatações de markdown (não coloque os blocos de código ```json ou ```).
-        Envie apenas e exclusivamente um objeto JSON exatamente com a seguinte estrutura:
-        {{
-            ""Calories"": 0.0,
-            ""Protein"": 0.0,
-            ""Carbs"": 0.0,
-            ""Fat"": 0.0
-        }}";
+        Você é uma API REST.
 
+        Entrada:
+        {descricao}
+
+        Sua tarefa:
+        Analise a seguinte refeição brasileira (se nao for, identifique (a)): '{descricao}'.
+        Estime as calorias (Calories), proteínas (Protein), carboidratos (Carbs) e gorduras (Fat) da refeiçao.
+
+
+        Se a quantidade não for informada:
+
+        - assuma UMA porção média consumida no Brasil;
+        - frutas → unidade média;
+        - massas → prato médio;
+        - arroz → porção média;
+        - carnes → porção média;
+        - bebidas → copo médio.
+
+        IMPORTANTE:
+
+        - Responda SOMENTE JSON.
+        - Não escreva código.
+        - Não escreva funções.
+        - Não explique.
+        - Não escreva texto.
+        - Não use markdown.
+        - Não gere pseudocódigo.
+        - Não use ```.
+
+        Use uma porção média brasileira.
+
+        Calcule:
+        Calories = Protein*4 + Carbs*4 + Fat*9
+
+        Retorne exatamente este formato:
+
+        {{
+        ""Calories"": 0,
+        ""Protein"": 0,
+        ""Carbs"": 0,
+        ""Fat"": 0
+        }}
+
+        JSON:";
         try
         {
             var resposta = await _clientChat.GetResponseAsync(prompt);
@@ -78,26 +109,30 @@ public class NutritionService : INutritionService
             jsonTexto = jsonTexto
                 .Replace("```json", "")
                 .Replace("```", "")
-                .Replace("\u00a0", " ")  // espaço não-quebrável
-                .Replace("\u2003", " ")  // espaço em
-                .Replace("\u2002", " ")  // espaço en
-                .Trim();// remove espaços e quebras de linha sobrando
-            
+                .Replace("\u00a0", " ") // espaço não-quebrável
+                .Replace("\u2003", " ") // espaço em
+                .Replace("\u2002", " ") // espaço en
+                .Trim(); // remove espaços e quebras de linha sobrando
+
             if (string.IsNullOrEmpty(jsonTexto))
                 throw new ArgumentNullException("Resposta veio vazia!");
-
+            
             var dadosExtraidos = JsonConvert.DeserializeObject<MeatGoal>(jsonTexto);
 
+            if (dadosExtraidos == null)
+            {
+                throw new Exception("JSON Invalido!");
+            }
 
             dadosExtraidos.UserId = userId;
             dadosExtraidos.ConsumedAt = DateTime.Now;
-            
+
             //Transformando o model em Dto
             var dadosExtraidosDto = dadosExtraidos.ToRespostaIaDto();
-            
+
             if (dadosExtraidosDto == null)
                 throw new ArgumentNullException(nameof(dadosExtraidos));
-            
+
 
             return dadosExtraidosDto;
         }

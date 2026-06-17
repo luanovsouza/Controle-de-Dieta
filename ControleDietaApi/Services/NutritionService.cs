@@ -129,6 +129,7 @@ public class NutritionService : INutritionService
                 throw new Exception("JSON Invalido!");
             }
 
+            //Dados para salvar no banco
             dadosExtraidos.UserId = userId;
             dadosExtraidos.Description = descricao;
             dadosExtraidos.ConsumedAt = DateTime.UtcNow;

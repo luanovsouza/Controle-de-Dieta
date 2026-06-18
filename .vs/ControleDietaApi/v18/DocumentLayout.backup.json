@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\gamer\\Documents\\Controle Dieta APi\\Controle-de-Dieta\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A8947FC3-E7B0-4821-8214-BD85A075BAAA}|ControleDietaApi\\ControleDietaApi.csproj|c:\\users\\gamer\\documents\\controle dieta api\\controle-de-dieta\\controledietaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8947FC3-E7B0-4821-8214-BD85A075BAAA}|ControleDietaApi\\ControleDietaApi.csproj|solutionrelative:controledietaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\gamer\\Documents\\Controle Dieta APi\\Controle-de-Dieta\\ControleDietaApi\\Program.cs",
+              "RelativeDocumentMoniker": "ControleDietaApi\\Program.cs",
+              "ToolTip": "C:\\Users\\gamer\\Documents\\Controle Dieta APi\\Controle-de-Dieta\\ControleDietaApi\\Program.cs",
+              "RelativeToolTip": "ControleDietaApi\\Program.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAUwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T21:03:51.871Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

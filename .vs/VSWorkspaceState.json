@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ControleDietaApi",
+    "\\ControleDietaApi\\Controllers",
+    "\\ControleDietaApi\\Dto",
+    "\\ControleDietaApi\\Models",
+    "\\ControleDietaApi\\Services",
+    "\\ControleDietaApi\\Services\\Interfaces"
+  ],
+  "PreviewInSolutionExplorer": false
+}

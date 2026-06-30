@@ -3,6 +3,7 @@ using ControleDietaApi.Dto.ExtensionsMappings;
 using ControleDietaApi.Models;
 using ControleDietaApi.Repositories.Interfaces;
 using ControleDietaApi.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDietaApi.Controllers;
@@ -10,6 +11,7 @@ namespace ControleDietaApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class UserMetaCalController : ControllerBase
 {
     private readonly INutritionService _nutritionService;

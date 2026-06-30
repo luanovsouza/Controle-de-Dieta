@@ -1,5 +1,6 @@
 ﻿using ControleDietaApi.Dto;
 using ControleDietaApi.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDietaApi.Controllers;
@@ -7,6 +8,7 @@ namespace ControleDietaApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class RefeicoesController : ControllerBase
 {
     private readonly IMealsUserRepository _userMealRepository;

@@ -1,12 +1,14 @@
 ﻿using ControleDietaApi.Dto;
 using ControleDietaApi.Repositories.Interfaces;
 using ControleDietaApi.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDietaApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ProcessFoodIaController : ControllerBase
 {
     private readonly INutritionService _nutritionService;

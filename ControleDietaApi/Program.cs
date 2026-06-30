@@ -105,11 +105,13 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(opt => opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Dieta"));
-}
+// if (app.Environment.IsDevelopment())
+// {
+//     
+// }
+
+app.UseSwagger();
+app.UseSwaggerUI(opt => opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Dieta"));
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

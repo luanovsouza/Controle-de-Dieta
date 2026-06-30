@@ -51,8 +51,8 @@ public class TokenService : ITokenService
             
             //Criando o Token
             var token = new JwtSecurityToken(
-                issuer: _configuration["JWT:ValidIssuer"],
-                audience: _configuration["JWT:ValidAudience"],
+                issuer: _configuration["JWT:Issuer"],
+                audience: _configuration["JWT:Audience"],
                 expires: expiracao,
                 claims: claims,
                 signingCredentials: credenciaisToken

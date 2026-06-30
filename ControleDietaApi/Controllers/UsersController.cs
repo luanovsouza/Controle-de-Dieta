@@ -1,4 +1,5 @@
-﻿using ControleDietaApi.Models;
+﻿using System.Security.Claims;
+using ControleDietaApi.Models;
 using ControleDietaApi.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,7 @@ public class UsersController : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<User>> Get()
     {
+        
         var users = _userRepository.GetAll();
 
         if (users == null)
@@ -43,9 +45,19 @@ public class UsersController : ControllerBase
     }
 
     [HttpDelete]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "AdminOnly")]
     public async Task<ActionResult<User>> DeleteAsync(int id)
     {
+        //Verifica se a pessoa ta logada e se nao tem autorização
+        var userIdLogado = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        
+        if(userIdLogado == null)
+            return Unauthorized("Usuario Nao Autorizado!");
+
+        if (userIdLogado != id.ToString())
+            return Forbid(); //está logado, mas tentando deletar conta de outra pessoa, entao so pode deletar a propia conta
+        
+        
         var userDeleted = await _userRepository.GetByIdAsync(userid => userid.Id == id);
 
         if (userDeleted is null)

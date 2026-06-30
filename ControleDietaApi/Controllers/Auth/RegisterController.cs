@@ -32,7 +32,10 @@ public class RegisterController : ControllerBase
         var newUser = await _userManager.CreateAsync(userObject, loginDto.Password!);
 
         if (!newUser.Succeeded)
-            return BadRequest($"Ocorreu um erro ao registrar -> {newUser.Errors}");
+        {
+            var erros = newUser.Errors.Select(e => e.Description);
+            return BadRequest($"Ocorreu um erro ao registrar -> {string.Join(", ", erros)}");
+        }
 
         return Ok(new
         {

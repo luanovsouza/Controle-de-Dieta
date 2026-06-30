@@ -101,6 +101,16 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IMealsUserRepository, MealUserRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+
+
+//Criação das Roles
+builder.Services.AddAuthorization(opt =>
+{
+    opt.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+    opt.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
+});
+
+
 var app = builder.Build();
 
 

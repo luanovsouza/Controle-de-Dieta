@@ -11,7 +11,7 @@ namespace ControleDietaApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+[Authorize(Roles = "UserOnly")]
 public class UserMetaCalController : ControllerBase
 {
     private readonly INutritionService _nutritionService;

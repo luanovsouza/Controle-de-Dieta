@@ -1,6 +1,7 @@
 ﻿using ControleDietaApi.Dto;
 using ControleDietaApi.Repositories.Interfaces;
 using ControleDietaApi.Services.Interfaces;
+using GenerativeAI.Types;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ namespace ControleDietaApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+[Authorize(Roles = "UserOnly")]
 public class ProcessFoodIaController : ControllerBase
 {
     private readonly INutritionService _nutritionService;

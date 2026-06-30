@@ -8,7 +8,7 @@ namespace ControleDietaApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+[Authorize(Roles = "UserOnly")]
 public class RefeicoesController : ControllerBase
 {
     private readonly IMealsUserRepository _userMealRepository;

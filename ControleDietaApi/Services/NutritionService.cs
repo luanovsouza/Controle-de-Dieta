@@ -152,4 +152,70 @@ public class NutritionService : INutritionService
             throw;
         }
     }
+
+    public async Task<ReceitaDto?> GerarReceita(string metaCalorica, int userId)
+    {
+        var prompt = $@"
+        Você é uma API REST.
+
+        Entrada:
+        Meta calórica diária do usuário: {metaCalorica} kcal
+        Objetivo do usuário: {metaCalorica}
+
+        Sua tarefa:
+        Crie UMA receita saudável e brasileira que se encaixe nessa meta calórica diária, considerando que essa receita representa UMA refeição do dia (não o total do dia).
+
+        Distribua aproximadamente 25% a 35% da meta diária nessa receita, dependendo do tipo de refeição (almoço ou jantar tendem a ser maiores).
+
+        IMPORTANTE:
+        - Responda SOMENTE JSON.
+        - Não escreva código.
+        - Não escreva funções.
+        - Não explique.
+        - Não escreva texto.
+        - Não use markdown.
+        - Não gere pseudocódigo.
+        - Não use ```.
+
+        Retorne exatamente este formato:
+
+        {{
+        ""Nome"": """",
+        ""Ingredientes"": [""""],
+        ""ModoDePreparo"": """",
+        ""Calorias"": 0,
+        ""Protein"": 0,
+        ""Carbs"": 0,
+        ""Fat"": 0
+        }}
+
+        JSON:";
+
+
+        try
+        {
+            var respostaIa = await _clientChat.GetResponseAsync(prompt);
+            var jsonTexto = respostaIa.Messages.Last().Text;
+            
+            jsonTexto = jsonTexto
+                .Replace("```json", "")
+                .Replace("```", "")
+                .Replace("\u00a0", " ")
+                .Replace("\u2003", " ")
+                .Replace("\u2002", " ")
+                .Trim();
+            
+            if(string.IsNullOrEmpty(jsonTexto))
+                throw new ArgumentNullException("Resposta veio vazia!");
+            
+            var dadosReceitaDto =  JsonConvert.DeserializeObject<ReceitaDto>(jsonTexto);
+
+            return dadosReceitaDto;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
+    }
 }

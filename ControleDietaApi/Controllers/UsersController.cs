@@ -8,7 +8,7 @@ namespace ControleDietaApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "AdminOnly")]
+[Authorize(Roles = "Admin")]
 public class UsersController : ControllerBase
 {
     private readonly IRepository<User> _userRepository;

@@ -83,7 +83,6 @@ namespace ControleDietaApi.Migrations
                         .HasColumnType("double precision");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("character varying(80)");
 
@@ -91,9 +90,12 @@ namespace ControleDietaApi.Migrations
                         .HasColumnType("numeric(5,2)");
 
                     b.Property<string>("Sexo")
-                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
+
+                    b.Property<string>("UserTokenId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

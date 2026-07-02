@@ -11,37 +11,29 @@ public class User
     [Key]
     [JsonIgnore]
     public int Id { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatorio!")]
+    
+    [JsonIgnore]
+    public string UserTokenId { get; set; } = null!;
+    
     [StringLength(80)]
     public string? Nome { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatorio!")]
+    
     [Range(0, 100, ErrorMessage = "Idade entre 0 e 100!")]
     public int Idade { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatorio!")]
+    
     [StringLength(30)]
     public string? Sexo { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatorio!, Sedentario,\n    Leve,\n    Moderado,\n    Intenso")]
+    
     [StringLength(30)]
     public NivelAtividade AtividadeFisica { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatorio!")]
+    
     [Column(TypeName = "numeric(5,2)")]
     public double Peso { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatorio!")]
+    
     [Column(TypeName = "numeric(5,2)")]
     public double Altura { get; set; }
-
-    /// <summary>
-    /// Emagrecer,
-    /// ManterPeso,
-    /// GanharMassa
-    /// </summary>
-    [Required(ErrorMessage = "Campo obrigatorio!")]
+    
+    
     public ObjetivoDieta Meta { get; set; } //A meta que ela vai querer pro corpo
 
     public double MetaDiaria { get; set; } //Meta diaria do q ela vai poder comer em questao de caloria

@@ -9,7 +9,7 @@ namespace ControleDietaApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "UserOnly")]
+[Authorize(Roles = "User")]
 public class ProcessFoodIaController : ControllerBase
 {
     private readonly INutritionService _nutritionService;

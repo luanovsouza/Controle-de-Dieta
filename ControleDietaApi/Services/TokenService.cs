@@ -15,11 +15,13 @@ public class TokenService : ITokenService
 {
     private readonly IConfiguration _configuration;
     private readonly UserManager<UserToken> _userManager;
+    private readonly IUserRepository _userRepository;
 
-    public TokenService(IConfiguration configuration, UserManager<UserToken> userManager)
+    public TokenService(IConfiguration configuration, UserManager<UserToken> userManager, IUserRepository userRepository)
     {
         _configuration = configuration;
         _userManager = userManager;
+        _userRepository = userRepository;
     }
 
     public async Task<UserTokenDto> GerarToken(UserToken userToken)
@@ -30,15 +32,19 @@ public class TokenService : ITokenService
 
             var roles = await _userManager.GetRolesAsync(userToken);
             
+            //busca o Usuario cujo UserTokenId é igual ao GUID do Identity
+            var user = await _userRepository.GetByIdAsync(u => u.UserTokenId == userToken.Id);
+            
             //Criando as listas de Claim
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, userToken.Id),
+                //Coloca o int Id do banco no token
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),// Ex: int: "5"
                 new Claim(ClaimTypes.Name, userToken.UserName!),
                 new Claim(ClaimTypes.Email, userToken.Email!),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
-            
+            //Criando as roles, e colocando nas claims
             foreach (var role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));

@@ -14,13 +14,17 @@ public class RegisterController : ControllerBase
     private readonly SignInManager<UserToken> _signInManager;
     private readonly ITokenService _tokenService;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly IUserRepository _userRepository;
+    private readonly IUnitOfWork _uof;
 
-    public RegisterController(UserManager<UserToken> userManager, SignInManager<UserToken> signInManager, ITokenService tokenService, RoleManager<IdentityRole> roleManager)
+    public RegisterController(UserManager<UserToken> userManager, SignInManager<UserToken> signInManager, ITokenService tokenService, RoleManager<IdentityRole> roleManager, IUserRepository userRepository, IUnitOfWork uof)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _tokenService = tokenService;
         _roleManager = roleManager;
+        _userRepository = userRepository;
+        _uof = uof;
     }
 
     [HttpPost("/user/Register")]
@@ -36,7 +40,16 @@ public class RegisterController : ControllerBase
             var erros = newUser.Errors.Select(e => e.Description);
             return BadRequest($"Ocorreu um erro ao registrar -> {string.Join(", ", erros)}");
         }
+        
+        //So para salvar o Guid no banco para o Identity lidar com o Login
+        var user = new User
+        {
+            UserTokenId = userObject.Id // GUID do Identity
+        };
 
+        await _userRepository.CreateAsync(user);
+        await _uof.Commit();
+        
         return Ok(new
         {
             Mensagem = "Usuario Registrado com sucesso!",

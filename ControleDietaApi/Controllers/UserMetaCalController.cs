@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using ControleDietaApi.Dto;
 using ControleDietaApi.Dto.ExtensionsMappings;
 using ControleDietaApi.Models;
@@ -11,7 +12,7 @@ namespace ControleDietaApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "UserOnly")]
+[Authorize(Roles = "User")]
 public class UserMetaCalController : ControllerBase
 {
     private readonly INutritionService _nutritionService;
@@ -47,11 +48,17 @@ public class UserMetaCalController : ControllerBase
             return BadRequest("Os dados do usuário não foram enviados corretamente.");
         }
         
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (userId == null)
+            return Unauthorized();
+        
+        
         var newUser = userDto.ToUser();
         //1 - Calcula a meta primeiro
         var meta = _nutritionService.CalcularMetaDiaria(newUser);
         newUser.MetaDiaria = meta;
-        
+        newUser.UserTokenId = userId;
         
         //Depois Salva no banco
         await _ofWork.Users.CreateAsync(newUser);

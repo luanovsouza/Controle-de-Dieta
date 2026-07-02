@@ -153,7 +153,7 @@ public class NutritionService : INutritionService
         }
     }
 
-    public async Task<ReceitaDto?> GerarReceita(string metaCalorica, int userId)
+    public async Task<ReceitaDto> GerarReceita(double metaCalorica, int userId)
     {
         var prompt = $@"
         Você é uma API REST.

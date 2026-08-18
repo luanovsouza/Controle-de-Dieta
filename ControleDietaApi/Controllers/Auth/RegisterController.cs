@@ -31,7 +31,7 @@ public class RegisterController : ControllerBase
     public async Task<ActionResult> Register([FromBody] LoginDto loginDto)
     {
         var userObject = new UserToken { UserName = loginDto.UserName, Email = loginDto.Email };
-        
+
         //Criando o usuario no banco
         var newUser = await _userManager.CreateAsync(userObject, loginDto.Password!);
 
@@ -40,7 +40,7 @@ public class RegisterController : ControllerBase
             var erros = newUser.Errors.Select(e => e.Description);
             return BadRequest($"Ocorreu um erro ao registrar -> {string.Join(", ", erros)}");
         }
-        
+
         //So para salvar o Guid no banco para o Identity lidar com o Login
         var user = new User
         {
@@ -49,7 +49,7 @@ public class RegisterController : ControllerBase
 
         await _userRepository.CreateAsync(user);
         await _uof.Commit();
-        
+
         return Ok(new
         {
             Mensagem = "Usuario Registrado com sucesso!",
